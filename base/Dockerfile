@@ -164,6 +164,10 @@ RUN corepack prepare pnpm --activate
 ENV COREPACK_ENABLE_DOWNLOADS=0
 ENV COREPACK_DEFAULT_TO_LATEST=0
 
+# Set default kubeconfig path
+RUN mkdir -p /root/.kube
+ENV KUBECONFIG=/root/.kube/config
+
 # Clean up
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
