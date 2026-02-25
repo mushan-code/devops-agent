@@ -128,6 +128,14 @@ RUN bash -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle ${GRA
 RUN ln -fs /root/.sdkman/candidates/gradle/current/bin/gradle /usr/local/bin/gradle
 
 # Install Maven
+# Prepare Maven config for Jenkins user
+RUN mkdir -p /home/jenkins/.m2 \
+    && mkdir -p /root/.m2
+COPY settings.xml /home/jenkins/.m2/settings.xml
+COPY settings.xml /root/.m2/settings.xml
+RUN chmod -R 755 /home/jenkins/.m2
+RUN chown -R 1000:1000 /home/jenkins/.m2
+
 ENV MAVEN_VERSION=3.9.9
 RUN curl -f -L https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar -C /opt -xzv && \
     mv /opt/apache-maven-${MAVEN_VERSION} /opt/apache-maven
