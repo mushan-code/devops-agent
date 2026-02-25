@@ -41,7 +41,7 @@ RUN apt-get update && \
     apt-transport-https \
     tini \
     fuse-overlayfs \
-    openjdk-21-jdk
+    openjdk-17-jdk
 
 # for podman
 COPY storage.conf /etc/containers/storage.conf
