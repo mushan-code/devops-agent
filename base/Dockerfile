@@ -50,7 +50,7 @@ COPY registries.conf /etc/containers/registries.conf
 VOLUME /var/lib/containers
 
 ## Settings for Java
-ENV JDK_HOME=/usr/lib/jvm/java-21-openjdk-${TARGETARCH}
+ENV JDK_HOME=/usr/lib/jvm/java-17-openjdk-${TARGETARCH}
 ENV JAVA_HOME=$JDK_HOME
 ENV PATH=$PATH:${JAVA_HOME}/bin
 
