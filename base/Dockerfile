@@ -5,7 +5,7 @@ ARG TARGETARCH
 # Set working directory
 WORKDIR /root
 
-ENV JENKINS_HOME /home/jenkins
+ENV JENKINS_HOME=/home/jenkins
 
 # Install utils
 RUN apt-get update && \
